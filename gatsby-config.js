@@ -1,34 +1,94 @@
 module.exports = {
-  siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+  flags: {
+    DEV_SSR: false
   },
   plugins: [
-    `gatsby-plugin-image`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: '@elegantstack/gatsby-theme-flexiblog-news',
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
+        // Add theme options here. Check documentation for available options.
+        siteUrl: process.env.URL || process.env.VERCEL_URL
+      }
+    }
   ],
+  // Customize your site metadata:
+  siteMetadata: {
+    //General Site Metadata
+    title: 'FlexiBlog Theme',
+    name: 'FlexiBlog',
+    description: 'My site description...',
+    address: 'New York, NY',
+    email: 'email@example.com',
+    phone: '+1 (888) 888-8888',
+
+    //Site Social Media Links
+    social: [
+      {
+        name: 'Github',
+        url: 'https://github.com/gatsbyjs'
+      },
+      {
+        name: 'Twitter',
+        url: 'https://twitter.com/gatsbyjs'
+      },
+      {
+        name: 'Instagram',
+        url: 'https://github.com/gatsbyjs'
+      }
+    ],
+
+    //Header Menu Items
+    headerMenu: [
+      {
+        name: 'Home',
+        slug: '/'
+      },
+      {
+        name: 'Our Team',
+        slug: '/authors'
+      },
+      {
+        name: 'Contact',
+        slug: '/contact'
+      }
+    ],
+
+    //Footer Menu Items (2 Sets)
+    footerMenu: [
+      {
+        title: 'Quick Links',
+        items: [
+          {
+            name: 'Advertise with us',
+            slug: '/contact'
+          },
+          {
+            name: 'About Us',
+            slug: '/about'
+          },
+          {
+            name: 'Contact Us',
+            slug: '/contact'
+          }
+        ]
+      },
+      {
+        title: 'Legal Stuff',
+        items: [
+          {
+            name: 'Privacy Notice',
+            slug: '/'
+          },
+          {
+            name: 'Cookie Policy',
+            slug: '/'
+          },
+          {
+            name: 'Terms Of Use',
+            slug: '/'
+          }
+        ]
+      }
+    ]
+  }
 }
